@@ -35,7 +35,7 @@ def password_generator(times_can_be_repeated: int,
 
 def verify_length(length: int, max_repetitions: int = 0) -> bool:
     """Verify if the length is valid."""
-    return length > 0 and length < max_repetitions*95 if max_repetitions > 0 else length > 0
+    return 0 < length < max_repetitions*95 if max_repetitions > 0 else length > 0
 
 def read_arguments(arguments) -> None:
     """Read the arguments and generate the password."""
