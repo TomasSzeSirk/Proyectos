@@ -35,14 +35,17 @@ def categorize_entropy(entropy: float) -> str:
     """Categorize the entropy of a password based on its value"""
     if entropy < 28:
         return "Very Weak"
-    elif entropy < 35:
+
+    if entropy < 35:
         return "Weak"
-    elif entropy < 59:
+
+    if entropy < 59:
         return "Reasonable"
-    elif entropy < 127:
+
+    if entropy < 127:
         return "Strong"
-    else:
-        return "Very Strong"
+
+    return "Very Strong"
 
 def main():
     """Main function of the script"""

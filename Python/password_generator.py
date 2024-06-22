@@ -17,8 +17,8 @@ Generates a random password with 12 characters, allowing each character to repea
 password_generator.py
 Generates a random password with 8 characters.\n'''
 
-def password_generator(times_can_be_repeated: int, lentgh: int = 8,
-                       do_not_repeat_characters: bool = False) -> str:
+def password_generator(times_can_be_repeated: int,
+                       do_not_repeat_characters: bool = False, lentgh: int = 8) -> str:
     """Generates a random password with the specified length."""
     password = ""
     alphabet = ascii_letters + digits + punctuation + " "
@@ -47,23 +47,22 @@ def read_arguments(arguments) -> None:
                 if not verify_length(int(arguments[3]), int(arguments[2])):
                     print("Error: Invalid maximum length.")
                     return
-                print(f"Password: {password_generator(int(arguments[2]), int(arguments[3]), True)}")
+                print(f"Password: {password_generator(int(arguments[2]), True, int(arguments[3]))}")
 
             except IndexError:
                 if not verify_length(8,int(arguments[2])):
                     print("Error: Invalid argument. The length must be greater than 0\n")
                     return
 
-                print(f"Password: {password_generator(int(arguments[2]),
-                                                      do_not_repeat_characters=True)}")
+                print(f"Password: {password_generator(int(arguments[2]), True)}")
         else:
             if not verify_length(int(arguments[1])):
                 print("Invalid argument. The length must be greater than 0\n")
                 return
 
-            print(f"Password: {password_generator(0, int(arguments[1]))}")
+            print(f"Password: {password_generator(-1, lentgh = int(arguments[1]))}")
     except IndexError:
-        print(f"Password: {password_generator(0)}")
+        print(f"Password: {password_generator(-1)}")
 
 def is_not_valid_repetition_arguments():
     """Verify if the arguments for the repetition are valid."""

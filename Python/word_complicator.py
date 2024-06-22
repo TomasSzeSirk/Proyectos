@@ -58,7 +58,7 @@ def main():
     while continue_modification:
         print(f"Modified Word: {word_complicator(argv[1])}")
         answer = input("Are you happy with the modifications? [y/n]: ").lower()
-        continue_modification = False if answer == "y" else True
+        continue_modification = not answer == "y"
         _ = clear() if continue_modification else None
 
 main()
